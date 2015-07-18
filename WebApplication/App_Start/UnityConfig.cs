@@ -1,7 +1,11 @@
 using System;
+using System.Data.Entity;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Practices.Unity;
 using WebApplication.Controllers;
 using WebApplication.Infrastructure;
+using WebApplication.Models;
 
 namespace WebApplication.App_Start
 {
@@ -38,6 +42,8 @@ namespace WebApplication.App_Start
 
             // TODO: Register your types here
             container.RegisterType<IHabitRepository, HabitRepository>();
+            container.RegisterType(typeof(IUserStore<ApplicationUser>), typeof(UserStore<ApplicationUser>));
+            container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
         }
     }
 }
