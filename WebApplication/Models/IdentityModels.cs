@@ -1,7 +1,12 @@
-﻿using System.Security.Claims;
+﻿#region Usings
+
+using System.Data.Entity;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+
+#endregion
 
 namespace WebApplication.Models
 {
@@ -19,16 +24,13 @@ namespace WebApplication.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
+        public ApplicationDbContext() : base("DefaultConnection", false) {}
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Habit> Habits { get; set; }
+        public IDbSet<Habit> Habits { get; set; }
     }
 }

@@ -1,9 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region Usings
+
+using System;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WebApplication.Models;
+
+#endregion
 
 namespace WebApplication.Controllers
 {
@@ -21,7 +23,7 @@ namespace WebApplication.Controllers
         // GET: Habit/Details/5
         public ActionResult Details(int id)
         {
-            var model = context.Habits.SingleOrDefault(_ => _.Id ==  id);
+            var model = context.Habits.SingleOrDefault(_ => _.Id == id);
             return View(model);
         }
 
@@ -55,7 +57,7 @@ namespace WebApplication.Controllers
         // GET: Habit/Edit/5
         public ActionResult Edit(int id)
         {
-            var model = context.Habits.SingleOrDefault(_ => _.Id ==  id);
+            var model = context.Habits.SingleOrDefault(_ => _.Id == id);
             return View(model);
         }
 
@@ -65,7 +67,7 @@ namespace WebApplication.Controllers
         {
             try
             {
-                var model = context.Habits.SingleOrDefault(_ => _.Id ==  id);
+                var model = context.Habits.SingleOrDefault(_ => _.Id == id);
                 model.Name = collection["Name"];
                 model.Count = Convert.ToInt32(collection["Count"]);
                 context.SaveChanges();
@@ -89,7 +91,7 @@ namespace WebApplication.Controllers
         {
             try
             {
-                var habit = context.Habits.SingleOrDefault(_ => _.Id ==  id);
+                var habit = context.Habits.SingleOrDefault(_ => _.Id == id);
                 context.Habits.Remove(habit);
                 context.SaveChanges();
                 return RedirectToAction("Index");
