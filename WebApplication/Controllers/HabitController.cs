@@ -3,6 +3,7 @@
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using WebApplication.Models;
 
 #endregion
@@ -12,11 +13,19 @@ namespace WebApplication.Controllers
     public class HabitController : Controller
     {
         private readonly ApplicationDbContext context = ApplicationDbContext.Create();
+        private readonly IHabitRepository repository;
+        public string UserEmail { get; set; }
+
+        public HabitController(IHabitRepository repository)
+        {
+            this.repository = repository;
+            UserEmail = User != null ? User.Identity.Name : string.Empty;
+        }
 
         // GET: Habit
         public ActionResult Index()
         {
-            var model = context.Habits.Where(_ => _.UserEmail == User.Identity.Name);
+            var model = repository.ReadHabits().Where(_ => _.UserEmail == UserEmail);
             return View(model);
         }
 

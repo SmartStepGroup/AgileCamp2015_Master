@@ -184,6 +184,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\HabitRepository.cs" />
+    <Compile Include="Controllers\IHabitRepository.cs" />
     <Compile Include="Migrations\201507141735477_InitialCreate.cs" />
     <Compile Include="Migrations\201507141735477_InitialCreate.Designer.cs">
       <DependentUpon>201507141735477_InitialCreate.cs</DependentUpon>
