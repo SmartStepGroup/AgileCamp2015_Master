@@ -3,7 +3,6 @@
 using System;
 using System.Linq;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 using WebApplication.Models;
 
 #endregion
@@ -108,6 +107,14 @@ namespace WebApplication.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                repository.Dispose();
             }
         }
     }
