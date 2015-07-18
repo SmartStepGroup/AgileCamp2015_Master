@@ -17,5 +17,10 @@ namespace WebApplication.Models
         public int Count { get; set; }
 
         public string UserEmail { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0} : {1}", Name, Count);
+        }
     }
 }

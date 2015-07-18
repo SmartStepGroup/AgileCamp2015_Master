@@ -15,7 +15,7 @@ namespace UnitTests
         {
             var habit = new Habit {Name = "Habit", Count = 1};
 
-            Assert.AreEqual("Habit", habit.Name);
+            Assert.AreEqual("Habit : 1", habit.ToString());
         }
     }
 }
