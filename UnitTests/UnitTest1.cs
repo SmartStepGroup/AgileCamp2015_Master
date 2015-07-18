@@ -1,7 +1,7 @@
 ﻿#region Usings
 
 using NUnit.Framework;
-using WebApplication.Controllers;
+using WebApplication.Models;
 
 #endregion
 
@@ -13,8 +13,9 @@ namespace UnitTests
         [Test]
         public void TestMethod1()
         {
-            var controller = new HabitController();
-            Assert.True(true);
+            var habit = new Habit {Name = "Habit", Count = 1};
+
+            Assert.AreEqual("Habit", habit.Name);
         }
     }
 }
