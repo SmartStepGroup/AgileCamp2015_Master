@@ -2,7 +2,7 @@
 <AnalyseParams>
     <Executable>C:\Program Files (x86)\NUnit 2.6.4\bin\nunit-console.exe</Executable>
     <WorkingDir>.</WorkingDir>
-    <Arguments>UnitTests\bin\Release\UnitTests.dll</Arguments>
+    <Arguments>UnitTests\bin\Debug\UnitTests.dll</Arguments>
     <Output>.\.out\dotCover.html</Output>
     <Filters>
         <IncludeFilters>
