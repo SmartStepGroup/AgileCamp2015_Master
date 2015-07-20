@@ -12,19 +12,11 @@ namespace WebApplication.Controllers
     public class HabitController : Controller
     {
         private readonly ApplicationDbContext context = ApplicationDbContext.Create();
-        private readonly IHabitRepository repository;
-        public string UserEmail { get; set; }
-
-        public HabitController(IHabitRepository repository)
-        {
-            this.repository = repository;
-            UserEmail = User != null ? User.Identity.Name : string.Empty;
-        }
 
         // GET: Habit
         public ActionResult Index()
         {
-            var model = repository.ReadHabits().Where(_ => _.UserEmail == UserEmail);
+            var model = context.Habits.Where(_ => _.UserEmail == User.Identity.Name);
             return View(model);
         }
 
@@ -48,10 +40,9 @@ namespace WebApplication.Controllers
         {
             try
             {
-                context.Habits.Add(new Habit
+                context.Habits.Add(new HabitModel
                 {
                     Name = collection["Name"],
-                    Count = 0,
                     UserEmail = User.Identity.Name
                 });
                 context.SaveChanges();
@@ -80,7 +71,6 @@ namespace WebApplication.Controllers
             {
                 var model = context.Habits.SingleOrDefault(_ => _.Id == id);
                 model.Name = collection["Name"];
-                model.Count = Convert.ToInt32(collection["Count"]);
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -110,14 +100,6 @@ namespace WebApplication.Controllers
             catch
             {
                 return View();
-            }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && repository != null)
-            {
-                repository.Dispose();
             }
         }
     }

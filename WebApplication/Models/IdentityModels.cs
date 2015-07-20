@@ -31,6 +31,6 @@ namespace WebApplication.Models
             return new ApplicationDbContext();
         }
 
-        public IDbSet<Habit> Habits { get; set; }
+        public IDbSet<HabitModel> Habits { get; set; }
     }
 }

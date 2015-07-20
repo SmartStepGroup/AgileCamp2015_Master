@@ -2,8 +2,15 @@
 
 namespace WebApplication.Models
 {
-    public class Habit
+    public class HabitModel
     {
+        public HabitModel()
+        {
+            Count = 0;
+            Status = HabitStatus.New;
+        }
+
+
         [Required]
         [Display(Name = "Id")]
         public int Id { get; set; }
@@ -14,7 +21,9 @@ namespace WebApplication.Models
 
         [Required]
         [Display(Name = "Count")]
-        public int Count { get; set; }
+        public int Count { get; private set; }
+
+        public HabitStatus Status { get; set; }
 
         public string UserEmail { get; set; }
 
@@ -22,5 +31,9 @@ namespace WebApplication.Models
         {
             return string.Format("{0} : {1}", Name, Count);
         }
+    }
+
+    public enum HabitStatus {
+        New
     }
 }

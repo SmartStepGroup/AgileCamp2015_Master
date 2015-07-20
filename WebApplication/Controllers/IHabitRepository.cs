@@ -5,6 +5,6 @@ using WebApplication.Models;
 namespace WebApplication.Controllers
 {
     public interface IHabitRepository : IDisposable {
-        IQueryable<Habit> ReadHabits();
+        IQueryable<HabitModel> ReadHabits();
     }
 }

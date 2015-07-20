@@ -194,9 +194,13 @@
     <Compile Include="Migrations\201507141755036_Habits.Designer.cs">
       <DependentUpon>201507141755036_Habits.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507201653303_Add status to HabitModel.cs" />
+    <Compile Include="Migrations\201507201653303_Add status to HabitModel.Designer.cs">
+      <DependentUpon>201507201653303_Add status to HabitModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Habit.cs" />
+    <Compile Include="Models\HabitModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -274,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507141755036_Habits.resx">
       <DependentUpon>201507141755036_Habits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507201653303_Add status to HabitModel.resx">
+      <DependentUpon>201507201653303_Add status to HabitModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

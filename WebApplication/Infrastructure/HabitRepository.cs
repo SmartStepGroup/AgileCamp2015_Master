@@ -8,7 +8,7 @@ namespace WebApplication.Infrastructure
     {
         private ApplicationDbContext context = ApplicationDbContext.Create();
 
-        public IQueryable<Habit> ReadHabits()
+        public IQueryable<HabitModel> ReadHabits()
         {
             return context.Habits;
         }

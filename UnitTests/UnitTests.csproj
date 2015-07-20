@@ -98,6 +98,7 @@
   <ItemGroup>
     <Compile Include="ActionResultExtentions.cs" />
     <Compile Include="HabitControllerTests.cs" />
+    <Compile Include="HabitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

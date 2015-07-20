@@ -41,7 +41,6 @@ namespace WebApplication.App_Start
             // container.LoadConfiguration();
 
             // TODO: Register your types here
-            container.RegisterType<IHabitRepository, HabitRepository>();
             container.RegisterType(typeof(IUserStore<ApplicationUser>), typeof(UserStore<ApplicationUser>));
             container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
         }
