@@ -42,6 +42,7 @@ namespace WebApplication.Controllers
         }
 
         // POST: Habit/Create
+
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -63,6 +64,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: Habit/Edit/5
+
         public ActionResult Edit(int id)
         {
             var model = context.Habits.SingleOrDefault(_ => _.Id == id);
@@ -70,6 +72,7 @@ namespace WebApplication.Controllers
         }
 
         // POST: Habit/Edit/5
+
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -112,7 +115,7 @@ namespace WebApplication.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            if (disposing && repository != null)
             {
                 repository.Dispose();
             }
