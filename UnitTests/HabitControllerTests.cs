@@ -18,8 +18,8 @@ namespace UnitTests
         public void Index()
         {
             var repository = Mock.Of<IHabitRepository>(_ => 
-                _.ReadHabits() == new [] { new HabitModel {Name = "Habit1", UserEmail = "user@email.com"}}.AsQueryable());
-            var habitController = new HabitController();
+                _.ReadHabits() == new [] { new HabitModel(null) {Name = "Habit1", UserEmail = "user@email.com"}}.AsQueryable());
+            var habitController = new HabitController(null);
 
             var view = habitController.Index();
 

@@ -1,15 +1,20 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication.Models
 {
     public class HabitModel
     {
-        public HabitModel()
+        private readonly IDate date;
+
+        private HabitModel() {}
+
+        public HabitModel(IDate date)
         {
+            this.date = date;
             Count = 0;
             Status = HabitStatus.New;
         }
-
 
         [Required]
         [Display(Name = "Id")]
@@ -31,9 +36,40 @@ namespace WebApplication.Models
         {
             return string.Format("{0} : {1}", Name, Count);
         }
+
+        public void UpdateStatus()
+        {
+            if (Count > 0)
+            {
+                Status = HabitStatus.InProgress;
+                return;
+            }
+
+            if (Count >= 21)
+            {
+                Status = HabitStatus.Completed;
+                Completed();
+                return;
+            }
+        }
+
+        private void Completed()
+        {
+            if (OnCompleted != null) OnCompleted(this, EventArgs.Empty);
+        }
+
+        public event EventHandler OnCompleted;
+
+        public void IncrementCount()
+        {
+            Count++;
+            UpdateStatus();
+        }
     }
 
     public enum HabitStatus {
-        New
+        New,
+        Completed,
+        InProgress
     }
 }

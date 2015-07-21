@@ -1,5 +1,6 @@
 ﻿#region Usings
 
+using Moq;
 using NUnit.Framework;
 using WebApplication.Models;
 
@@ -15,9 +16,23 @@ namespace UnitTests
         {
             HabitModel habit;
 
-            habit = new HabitModel();
+            habit = new HabitModel(null);
 
             Assert.AreEqual(HabitStatus.New, habit.Status);
+        }
+
+        [Test]
+        public void Completed()
+        {
+            var habit = new HabitModel(null);
+            var completedWasFired = false;
+            habit.OnCompleted += (_, __) => completedWasFired = true;
+
+            for (var i = 1; i <= 20; i++) habit.IncrementCount();
+            Assert.IsFalse(completedWasFired);
+
+            habit.IncrementCount();
+            Assert.IsFalse(completedWasFired);
         }
     }
 }
