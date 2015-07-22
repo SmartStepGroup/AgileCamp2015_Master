@@ -1,13 +1,11 @@
-#region Usings
-
 using System;
 using System.Data.Entity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Practices.Unity;
+using WebApplication.Controllers;
+using WebApplication.Infrastructure;
 using WebApplication.Models;
-
-#endregion
 
 namespace WebApplication.App_Start
 {
@@ -17,8 +15,7 @@ namespace WebApplication.App_Start
     public class UnityConfig
     {
         #region Unity Container
-
-        private static readonly Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
+        private static Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
         {
             var container = new UnityContainer();
             RegisterTypes(container);
@@ -32,7 +29,6 @@ namespace WebApplication.App_Start
         {
             return container.Value;
         }
-
         #endregion
 
         /// <summary>Registers the type mappings with the Unity container.</summary>
@@ -45,9 +41,8 @@ namespace WebApplication.App_Start
             // container.LoadConfiguration();
 
             // TODO: Register your types here
-            container.RegisterType(typeof (IUserStore<ApplicationUser>), typeof (UserStore<ApplicationUser>));
+            container.RegisterType(typeof(IUserStore<ApplicationUser>), typeof(UserStore<ApplicationUser>));
             container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
-            container.RegisterType<IDate, Date>(new ContainerControlledLifetimeManager());
         }
     }
 }

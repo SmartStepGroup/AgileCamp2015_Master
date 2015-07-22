@@ -181,7 +181,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HabitController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UsersByHabitController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -201,13 +200,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\Date.cs" />
     <Compile Include="Models\HabitModel.cs" />
-    <Compile Include="Models\HabitService.cs" />
-    <Compile Include="Models\IDate.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -267,7 +261,6 @@
     <Content Include="Views\Habit\Details.cshtml" />
     <Content Include="Views\Habit\Edit.cshtml" />
     <Content Include="Views\Habit\Delete.cshtml" />
-    <Content Include="Views\UsersByHabit\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

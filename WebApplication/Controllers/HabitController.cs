@@ -11,13 +11,7 @@ namespace WebApplication.Controllers
 {
     public class HabitController : Controller
     {
-        private readonly IDate date;
         private readonly ApplicationDbContext context = ApplicationDbContext.Create();
-
-        public HabitController(IDate date)
-        {
-            this.date = date;
-        }
 
         // GET: Habit
         public ActionResult Index()
@@ -46,7 +40,7 @@ namespace WebApplication.Controllers
         {
             try
             {
-                context.Habits.Add(new HabitModel(date)
+                context.Habits.Add(new HabitModel
                 {
                     Name = collection["Name"],
                     UserEmail = User.Identity.Name

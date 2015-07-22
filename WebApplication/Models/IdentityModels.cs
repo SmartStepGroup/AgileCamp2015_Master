@@ -1,10 +1,7 @@
 ﻿#region Usings
 
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using System.Security.Claims;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -13,7 +10,19 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WebApplication.Models
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IDbContext
+    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
+    public class ApplicationUser : IdentityUser
+    {
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            // Add custom user claims here
+            return userIdentity;
+        }
+    }
+
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext() : base("DefaultConnection", false) {}
 
@@ -23,26 +32,5 @@ namespace WebApplication.Models
         }
 
         public IDbSet<HabitModel> Habits { get; set; }
-
-        IEnumerable<User> IDbContext.Users
-        {
-            get { return this.Users.Select(ToUser); }
-        }
-
-        IQueryable<HabitModel> IDbContext.Habits {
-            get { return Habits; }
-        }
-
-        private User ToUser(ApplicationUser applicationUser)
-        {
-            return new User(applicationUser.UserName, applicationUser.Email, Habits.Where(_ => _.UserEmail == applicationUser.Email));
-        }
-
-    }
-
-    public interface IDbContext
-    {
-        IQueryable<HabitModel> Habits { get; }
-        IEnumerable<User> Users { get; }
     }
 }
