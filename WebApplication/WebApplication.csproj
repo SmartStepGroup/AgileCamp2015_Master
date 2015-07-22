@@ -260,7 +260,6 @@
     <Content Include="Views\Habit\Create.cshtml" />
     <Content Include="Views\Habit\Details.cshtml" />
     <Content Include="Views\Habit\Edit.cshtml" />
-    <Content Include="Views\Habit\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

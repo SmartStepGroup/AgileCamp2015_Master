@@ -90,17 +90,7 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
-            {
-                var habit = context.Habits.SingleOrDefault(_ => _.Id == id);
-                context.Habits.Remove(habit);
-                context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
     }
 }
